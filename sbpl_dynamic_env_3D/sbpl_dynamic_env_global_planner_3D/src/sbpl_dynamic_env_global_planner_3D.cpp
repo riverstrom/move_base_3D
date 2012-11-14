@@ -283,21 +283,8 @@ void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start
 
   vector<geometry_msgs::PoseStamped> plan;
 
-  if(grid_ != NULL)
-  {
-    delete grid_;
-    /** Initialize Occupancy Grid */
-    grid_ = new sbpl_arm_planner::OccupancyGrid(worldx_, worldy_, worldz_, resolution_, originx_, originy_, originz_);
-    grid_->setReferenceFrame(global_frame_id_);
-  }
-
-  /** Update Occupancy Grid using the latest collision map */
-  //if (!(cmap_loaded_))
-  //{
-    updateOccupancyGrid(cmap);
-    cmap_loaded_ = true;
-  //}
-
+  updateOccupancyGrid(cmap);
+  cmap_loaded_ = true;
 
 
   ROS_INFO("\n\n\n\nstart wrapper\n");

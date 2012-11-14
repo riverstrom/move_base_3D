@@ -23,9 +23,9 @@ obst_cost_thresh: 255
 dyn_obs_cost_thresh: 255
 
 #Planner Parameters
-allocated_time: 2.0 #.2 #0.5
-initial_epsilon: 8.0
-decrease_epsilon: 4.0
+allocated_time: 0.2 #.2 #0.5
+initial_epsilon: 1.0
+decrease_epsilon: 1.0
 temporal_padding: 1.5
 
 #Topic names
