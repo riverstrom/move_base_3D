@@ -140,6 +140,7 @@ void SBPLDynEnv3DGlobalPlanner::updateOccupancyGrid(const arm_navigation_msgs::C
 void SBPLDynEnv3DGlobalPlanner::initialize(std::string name) 
 {
   initialized_ = false;
+  cmap_loaded_ = false;
   if(!initialized_) 
   {
     ros::NodeHandle private_nh("~");
@@ -158,7 +159,7 @@ void SBPLDynEnv3DGlobalPlanner::initialize(std::string name)
     private_nh.param("timetoturn45degsinplace_secs", timetoturn45degsinplace_secs, 0.6);
 
 
-    private_nh.param("remove_dynObs_from_costmap", remove_dynObs_from_costmap, true);
+    private_nh.param("remove_dynObs_from_costmap", remove_dynObs_from_costmap, false);
     private_nh.param("dyn_obs_pad_costmap_removal", dyn_obs_pad_costmap_removal, 0.2);
     private_nh.param("inflation_radius",inflation_radius_,0.55);
 
@@ -198,9 +199,9 @@ void SBPLDynEnv3DGlobalPlanner::initialize(std::string name)
   //  octomap_server_ = new octomap::OctomapServer(static_collision_map_);
     std::vector<geometry_msgs::Point> footprint;
     geometry_msgs::Point pt;
-    pt.x = 0; pt.y = 0; pt.z = 0.5;
+    pt.x = 0; pt.y = 0; pt.z = 0.15;
     footprint.push_back(pt);
-    pt.x = 0; pt.y = 0; pt.z = -0.5;
+    pt.x = 0; pt.y = 0; pt.z = -0.15;
     footprint.push_back(pt);
     pt.x = 0.5; pt.y = 0; pt.z = 0;
     footprint.push_back(pt);
@@ -241,6 +242,8 @@ void SBPLDynEnv3DGlobalPlanner::initialize(std::string name)
           int cell[] = {ix,iy,iz};
           double dist_to_obs = grid_->getCell(cell);
           env->UpdateCost(ix, iy, iz, convertDistToCost(dist_to_obs));
+          //env->UpdateCost(ix, iy, iz, ix);
+          //ROS_ERROR("x: %d ,y: %d ,z: %d Dist: %f Cost: %d", ix, iy, iz, dist_to_obs, convertDistToCost(dist_to_obs));
         }
 
     planner = new IntervalPlanner(env);
@@ -278,10 +281,25 @@ unsigned char SBPLDynEnv3DGlobalPlanner::convertDistToCost(double dist)
 void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start, const geometry_msgs::PoseStamped& goal, const arm_navigation_msgs::CollisionMap& cmap) 
 {
 
-  /** Update Occupancy Grid using the latest collision map */
-  updateOccupancyGrid(cmap);
-
   vector<geometry_msgs::PoseStamped> plan;
+
+  if(grid_ != NULL)
+  {
+    delete grid_;
+    /** Initialize Occupancy Grid */
+    grid_ = new sbpl_arm_planner::OccupancyGrid(worldx_, worldy_, worldz_, resolution_, originx_, originy_, originz_);
+    grid_->setReferenceFrame(global_frame_id_);
+  }
+
+  /** Update Occupancy Grid using the latest collision map */
+  //if (!(cmap_loaded_))
+  //{
+    updateOccupancyGrid(cmap);
+    cmap_loaded_ = true;
+  //}
+
+
+
   ROS_INFO("\n\n\n\nstart wrapper\n");
   //clearing plan to make sure that there's no garbage
   plan.clear();
@@ -355,8 +373,23 @@ void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start
 
         int cell[] = {ix,iy,iz};
         double dist_to_obs = grid_->getCell(cell);
-        //  printf("%d %d %d: %f\n",ix,iy,iz,dist_to_obs);
+        if((ix > 110) && (ix < 112) && (iy > 110) && (iy < 112) && (iz >= 5) && (iz < 7))
+        {
+          ROS_ERROR("%d %d %d: dist_to_obs=%f: cost==%d\n",ix,iy,iz,dist_to_obs, convertDistToCost(dist_to_obs));
+        }
+
         env->UpdateCost(ix, iy, iz, convertDistToCost(dist_to_obs));
+
+
+//        if((ix > 100) && (ix < 110) && (iy > 100) && (iy < 110) && (iz >= 5) && (iz < 15))
+//        {
+//          env->UpdateCost(ix, iy, iz, 90);
+//        }
+//        if((ix > 105) && (ix < 108) && (iy > 119) && (iy < 122) && (iz >= 7) && (iz < 9))
+//        {
+//          ROS_ERROR("%d %d %d: %f: %d\n",ix,iy,iz,dist_to_obs, convertDistToCost(dist_to_obs));
+//          env->UpdateCost(ix, iy, iz, convertDistToCost(dist_to_obs));
+//        }
       }
     }
   }
@@ -377,6 +410,7 @@ void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start
     ROS_DEBUG("Solution not found");
     // return false;
   }
+
   ROS_DEBUG("size of solution=%d", (int)solution_stateIDs.size());
   printf("End Planning\n");
 
@@ -387,7 +421,7 @@ void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start
 
   //create a message for the plan 
   nav_msgs::Path gui_path;
-  gui_path.set_poses_size(sbpl_path.size());
+  gui_path.poses.resize(sbpl_path.size());
   gui_path.header.frame_id = global_frame_id_;
   gui_path.header.stamp = plan_time;
   visualization_msgs::MarkerArray ma;

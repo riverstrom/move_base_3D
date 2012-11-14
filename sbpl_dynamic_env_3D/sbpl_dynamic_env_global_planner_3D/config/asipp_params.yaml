@@ -5,7 +5,7 @@ worldz: 2.0
 originx: -10.0
 originy: -10.0
 originz: 0.0
-resolution: 0.1
+resolution: 0.25
 time_resolution: 0.1
 global_frame_id: /map
 use_collision_map_from_sensors: true
@@ -16,16 +16,16 @@ timetoturn45degsinplace_secs: 0.6
 inflation_radius: 0.55
 
 #Costmap Parameters
-cost_decay_radius: 0.75     #in meters
+cost_decay_radius: 0.5     #in meters
 cost_inscribed_thresh: 85   #0-255
 cost_possiby_circumscribed_thresh: 0.80 #0-255
 obst_cost_thresh: 255
 dyn_obs_cost_thresh: 255
 
 #Planner Parameters
-allocated_time: 0.2 #0.5
-initial_epsilon: 10.0
-decrease_epsilon: 1.0
+allocated_time: 2.0 #.2 #0.5
+initial_epsilon: 8.0
+decrease_epsilon: 4.0
 temporal_padding: 1.5
 
 #Topic names

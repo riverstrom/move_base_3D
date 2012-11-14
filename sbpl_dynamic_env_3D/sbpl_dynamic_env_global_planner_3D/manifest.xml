@@ -9,7 +9,7 @@ A wrapper around sbpl_dynamic_planner_3D which allows it to be used as a global 
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/sbpl_dynamic_env_global_planner</url>
   <depend package="roscpp"/>
-  <depend package="sbpl"/>
+  <!--  depend package="sbpl"/ -->
   <depend package="sbpl_dynamic_planner_3D"/>
   <depend package="sbpl_arm_planner"/>
   <depend package="sbpl_3d_planner"/>
@@ -26,6 +26,8 @@ A wrapper around sbpl_dynamic_planner_3D which allows it to be used as a global 
     <nav_core plugin="${prefix}/bgp_plugin.xml" />
   </export>
 
+  <rosdep name="sbpl" />
+  
 </package>
 
 

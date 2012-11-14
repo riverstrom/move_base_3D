@@ -22,6 +22,7 @@
 #include <sbpl_dynamic_planner_3D/weightedAStar.h>
 #include <sbpl_dynamic_planner_3D/intervalPlanner.h>
 #include <sbpl_arm_planner/occupancy_grid.h>
+//#include <sbpl_collision_checking/occupancy_grid.h>
 #include <dynamic_obs_msgs/DynamicObstacles.h>
 
 class SBPLDynEnv3DGlobalPlanner : public SBPL3DPlanner 
@@ -66,6 +67,7 @@ private:
   sbpl_arm_planner::OccupancyGrid* grid_;   /* Occupancy grid that maintains the distance transform of the collision map returned by octomap server*/
    
   bool initialized_;
+  bool cmap_loaded_;
 
   IntervalPlanner* planner;
   DiscreteSpaceTimeIntervalInformation* env;
