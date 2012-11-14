@@ -17,6 +17,7 @@
   <depend package="std_msgs"/>
   <depend package="pcl_ros"/>
   <depend package="octomap_ros"/>
+  <depend package="octomap_msgs"/>
   <depend package="sbpl_dynamic_env_global_planner_3D"/>
   <depend package="sbpl_3d_planner"/>
 
