@@ -13,7 +13,7 @@
   <depend package="geometry_msgs"/>
 
   <export>
-    <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -W1, -rpath,${prefix}/lib -lros"/>
+    <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -W1,-rpath,${prefix}/lib"/>
   </export>
 
 </package>
