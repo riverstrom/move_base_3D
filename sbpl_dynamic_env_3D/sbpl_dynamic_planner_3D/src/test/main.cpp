@@ -188,7 +188,7 @@ bool collisionCheck(vector<SBPL_4Dpt_t> xythetatimePath, vector<vector<vector <d
 	for(int j=0;j<(int)dynObsTrajs.size();j++){
 		for(int k=0;k<(int)(dynObsTrajs[j].size()-1);k++){		
 			if((dynObsTrajs[j][k][0]-xythetatimePath[i].x)*(dynObsTrajs[j][k][0]-xythetatimePath[i].x)+(dynObsTrajs[j][k][1]-xythetatimePath[i].y)*(dynObsTrajs[j][k][1]-xythetatimePath[i].y)+(dynObsTrajs[j][k][2]-xythetatimePath[i].z)*(dynObsTrajs[j][k][2]-xythetatimePath[i].z) <= (robot_radius+dynObsRad[j])*(robot_radius+dynObsRad[j]) && marked_obstacles[j]==false){	
-				  if(abs(dynObsTrajs[j][k][3]-xythetatimePath[i].t)<=0.1){
+				  if(abs((long int)(dynObsTrajs[j][k][3]-xythetatimePath[i].t))<=0.1){
 					// Add obstacle trajectory for the next SIPP iteration
 					marked_obstacles[j] = true;
 					obsCount++;
@@ -217,11 +217,11 @@ bool collisionCheck(vector<SBPL_4Dpt_t> xythetatimePath, vector<vector<vector <d
   }
   
   if(atleast_one_collision){
-	ROS_INFO("Collision !!\n");
-	ROS_INFO("We will now consider %d more dynamic obstacles for the next iteration\n",obsCount);
+	printf("Collision !!\n");
+	printf("We will now consider %d more dynamic obstacles for the next iteration\n",obsCount);
   }
   else{
-	ROS_INFO("No collision. We are done :)\n");
+	printf("No collision. We are done :)\n");
 	}
   return atleast_one_collision;
 }
@@ -437,7 +437,7 @@ int planAnytimeIntervallat(int argc, char *argv[], double eps, bool uptotimehori
 
 		  if(planner.set_goal(environment_navIntervallat_dynamic.getGoalID()) == 0)
 		  {
-		      printf("ERROR: failed to set start state\n");
+		      printf("ERROR: failed to set goal state\n");
 		      exit(1);
 		  }
 

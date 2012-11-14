@@ -8,15 +8,16 @@
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/sbpl_dynamic_planner</url>
-  <depend package="sbpl"/>
+  <!-- depend package="sbpl"/-->
   <depend package="visualization_msgs"/>
   <depend package="tf"/>
 
   <export>
-    <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lsbpl_dynamic_planner"/>
+    <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lsbpl_dynamic_planner -lsbpl"/>
   </export>
 
-
+  <rosdep name="sbpl" />
+  
 </package>
 
 

@@ -1,0 +1,80 @@
+Background\ ColorB=0.129412
+Background\ ColorG=0.0941176
+Background\ ColorR=0.282353
+Camera\ Config=1.006 0.920768 11.6658 -2.20428 0.399387 -0.060076
+Camera\ Type=rviz::OrbitViewController
+CollisionMap.Alpha=1
+CollisionMap.ColorB=0
+CollisionMap.ColorG=0
+CollisionMap.ColorR=0
+CollisionMap.Enabled=1
+CollisionMap.Override\ Color=0
+CollisionMap.Render\ Operation=1
+CollisionMap.Topic=/collision_map_out
+Fixed\ Frame=/map
+Grid.Alpha=0.5
+Grid.Cell\ Size=0.1
+Grid.ColorB=0.27451
+Grid.ColorG=0.27451
+Grid.ColorR=0.301961
+Grid.Enabled=1
+Grid.Line\ Style=0
+Grid.Line\ Width=0.03
+Grid.Normal\ Cell\ Count=0
+Grid.OffsetX=0
+Grid.OffsetY=0
+Grid.OffsetZ=0
+Grid.Plane=0
+Grid.Plane\ Cell\ Count=100
+Grid.Reference\ Frame=<Fixed Frame>
+Interactive\ Markers.Enabled=1
+Interactive\ Markers.Show\ Axes=0
+Interactive\ Markers.Show\ Descriptions=1
+Interactive\ Markers.Show\ Tool\ Tips=1
+Interactive\ Markers.Update\ Topic=/uav_set_goal/update
+Map.Alpha=0.7
+Map.Draw\ Behind=0
+Map.Enabled=0
+Map.Topic=/map
+Path.Alpha=1
+Path.ColorB=0
+Path.ColorG=1
+Path.ColorR=0.1
+Path.Enabled=1
+Path.Topic=/plan
+Property\ Grid\ Splitter=771,78
+Property\ Grid\ State=expanded=.Global Options,Map.Enabled,Grid.Enabled,Robot Model.Enabled,CollisionMap.Enabled,Interactive Markers.Enabled;splitterratio=0.5
+QMainWindow=000000ff00000000fd000000030000000000000184000003a3fc0200000001fb000000100044006900730070006c006100790073010000001d000003a3000000ee00ffffff0000000100000131000003bffc0200000003fb0000001e0054006f006f006c002000500072006f0070006500720074006900650073000000001d000000f80000006700fffffffb0000000a00560069006500770073000000001d00000267000000bb00fffffffb0000001200530065006c0065006300740069006f006e000000001d000003bf0000006700ffffff000000030000039f0000003efc0100000001fb0000000800540069006d006501000000000000039f000002bf00ffffff00000215000003a300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+Robot\ Model.Alpha=1
+Robot\ Model.Collision\ Enabled=0
+Robot\ Model.Enabled=1
+Robot\ Model.Robot\ Description=robot_description
+Robot\ Model.TF\ Prefix=
+Robot\ Model.Update\ Interval=0
+Robot\ Model.Visual\ Enabled=1
+Target\ Frame=/map
+Tool\ 2D\ Nav\ GoalTopic=currentPos
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+[Display0]
+ClassName=rviz::MapDisplay
+Name=Map
+[Display1]
+ClassName=rviz::GridDisplay
+Name=Grid
+[Display2]
+ClassName=rviz::RobotModelDisplay
+Name=Robot Model
+[Display3]
+ClassName=rviz::PathDisplay
+Name=Path
+[Display4]
+ClassName=mapping_rviz_plugin::CollisionMapDisplay
+Name=CollisionMap
+[Display5]
+ClassName=rviz::InteractiveMarkerDisplay
+Name=Interactive Markers
+[Window]
+Height=1064
+Width=943
+X=985
+Y=0

@@ -43,7 +43,7 @@
 //0 - is aligned with X-axis in the positive direction (1,0 in polar coordinates)
 //theta increases as we go counterclockwise
 //number of theta values - should be power of 2
-#define ENVINTERVALLAT_THETADIRS 16
+#define ENVINTERVALLAT_THETADIRS 8
 
 //number of actions per x,y,theta state
 #define ENVINTERVALLAT_DEFAULT_ACTIONWIDTH 5 //decrease, increase, same angle while moving plus decrease, increase angle while standing.

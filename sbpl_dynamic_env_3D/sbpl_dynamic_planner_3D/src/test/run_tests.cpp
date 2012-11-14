@@ -58,7 +58,7 @@ bool collisionCheck(vector<SBPL_4Dpt_t> xythetatimePath, vector<vector<vector <d
 	for(int j=0;j<(int)dynObsTrajs.size();j++){
 		for(int k=0;k<(int)(dynObsTrajs[j].size()-1);k++){		
 			if((dynObsTrajs[j][k][0]-xythetatimePath[i].x)*(dynObsTrajs[j][k][0]-xythetatimePath[i].x)+(dynObsTrajs[j][k][1]-xythetatimePath[i].y)*(dynObsTrajs[j][k][1]-xythetatimePath[i].y)+(dynObsTrajs[j][k][2]-xythetatimePath[i].z)*(dynObsTrajs[j][k][2]-xythetatimePath[i].z) <= (robot_radius+dynObsRad[j])*(robot_radius+dynObsRad[j]) && marked_obstacles[j]==false){	
-				  if(abs(dynObsTrajs[j][k][3]-xythetatimePath[i].t)<=0.1){
+				  if((abs((long int) (dynObsTrajs[j][k][3]-xythetatimePath[i].t)))<=0.1){
 					// Add obstacle trajectory for the next SIPP iteration
 					marked_obstacles[j] = true;
 					obsCount++;
@@ -417,7 +417,7 @@ int planAnytimeIntervallat(int argc, char *argv[], char* env_path, char* dyn_obs
 	
     if(in_collision){
 	search_end_time = clock();
-	ROS_INFO("The planner could not find a safe path within the allocated time");
+	printf("The planner could not find a safe path within the allocated time");
 	return 0;
     }
     else{

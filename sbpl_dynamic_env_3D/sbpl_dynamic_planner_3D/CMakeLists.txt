@@ -26,9 +26,11 @@ rosbuild_add_library(sbpl_dynamic_planner
 
 rosbuild_add_executable(test_sbpl3D src/test/main.cpp)
 target_link_libraries(test_sbpl3D sbpl_dynamic_planner)
+target_link_libraries(test_sbpl3D sbpl)
 
 rosbuild_add_executable(run_tests src/test/run_tests.cpp)
 target_link_libraries(run_tests sbpl_dynamic_planner)
+target_link_libraries(run_tests sbpl)
 
 rosbuild_add_executable(pathVisualizer src/pathVisualizer.cpp)
 

@@ -1,13 +1,14 @@
-Background\ ColorR=0.458824
-Background\ ColorG=0.25098
 Background\ ColorB=0.188235
+Background\ ColorG=0.25098
+Background\ ColorR=0.458824
+Camera\ Config=0.620999 2.83657 29.341 -5.60459 -2.70382 -5.15378
+Camera\ Type=rviz::OrbitViewController
 Fixed\ Frame=/base_link
-Target\ Frame=/base_link
 Grid.Alpha=0.5
 Grid.Cell\ Size=0.1
-Grid.ColorR=0.301961
-Grid.ColorG=0.27451
 Grid.ColorB=0.27451
+Grid.ColorG=0.27451
+Grid.ColorR=0.301961
 Grid.Enabled=1
 Grid.Line\ Style=0
 Grid.Line\ Width=0.03
@@ -24,7 +25,11 @@ Map.Enabled=0
 Map.Topic=/map
 Markers.Enabled=1
 Markers.Marker\ Topic=/base_link/visualization_marker
+Markers.Queue\ Size=100
 Markers.robot=1
+Property\ Grid\ Splitter=799,78
+Property\ Grid\ State=expanded=.Global Options,Map.Enabled,Grid.Enabled,Robot Model.Enabled,Markers.Enabled;splitterratio=0.5
+QMainWindow=000000ff00000000fd0000000300000000000002d7000003bffc0200000001fb000000100044006900730070006c006100790073010000001d000003bf000000ee00ffffff0000000100000131000003bffc0200000003fb0000001e0054006f006f006c002000500072006f0070006500720074006900650073000000001d000000f80000006700fffffffb0000000a00560069006500770073000000001d00000267000000bb00fffffffb0000001200530065006c0065006300740069006f006e000000001d000003bf0000006700ffffff000000030000073f0000003efc0100000001fb0000000800540069006d006501000000000000073f000002bf00ffffff00000462000003bf00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
 Robot\ Model.Alpha=1
 Robot\ Model.Collision\ Enabled=0
 Robot\ Model.Enabled=1
@@ -32,24 +37,23 @@ Robot\ Model.Robot\ Description=robot_description
 Robot\ Model.TF\ Prefix=
 Robot\ Model.Update\ Interval=0
 Robot\ Model.Visual\ Enabled=1
+Target\ Frame=/base_link
 Tool\ 2D\ Nav\ GoalTopic=/move_base_simple/goal
 Tool\ 2D\ Pose\ EstimateTopic=initialpose
-Camera\ Type=rviz::OrbitViewController
-Camera\ Config=0.870999 2.82657 29.341 -5.60459 -2.70382 -5.15378
-Property\ Grid\ State=selection=Background Color;expanded=.Global Options,Map.Enabled,Grid.Enabled,Robot Model.Enabled,Markers.Enabled,Markers.Enabled.Markers.Namespaces;scrollpos=0,0;splitterpos=240,496;ispageselected=1
 [Display0]
-Name=Map
-Package=rviz
 ClassName=rviz::MapDisplay
+Name=Map
 [Display1]
-Name=Grid
-Package=rviz
 ClassName=rviz::GridDisplay
+Name=Grid
 [Display2]
-Name=Robot Model
-Package=rviz
 ClassName=rviz::RobotModelDisplay
+Name=Robot Model
 [Display3]
-Name=Markers
-Package=rviz
 ClassName=rviz::MarkerDisplay
+Name=Markers
+[Window]
+Height=1092
+Width=1871
+X=56
+Y=-56
