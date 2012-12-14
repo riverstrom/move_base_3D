@@ -11,7 +11,8 @@
     <param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/simple_0.5_diag_heli_time_0.1.mprim" /> 
 <!--     <param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/heli_time_0.1.mprim" /> -->
 <!--     <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg-room-1.bt" /> -->
-    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg_room_1.bt" />
+<!--     <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg_room_1.bt" /> -->
+    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/freiburg1_360.bt" />
   </node>
 
   <!-- UAV Goal Set -->
