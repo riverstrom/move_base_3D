@@ -30,6 +30,9 @@
 #define __WEIGHTED_A_STAR_H_
 
 #include <sbpl_dynamic_planner_3D/DiscreteSpaceTimeInformation.h>
+#include <cmath>
+#include <string.h>
+
 
 //---configuration----
 

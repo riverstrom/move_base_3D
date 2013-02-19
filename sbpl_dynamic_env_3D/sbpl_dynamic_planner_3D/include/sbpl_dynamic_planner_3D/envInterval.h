@@ -31,6 +31,8 @@
 
 #include <sbpl_dynamic_planner_3D/DiscreteSpaceTimeIntervalInformation.h>
 #include <sbpl_dynamic_planner_3D/sbpl_dynamicObstacles.h>
+#include <cmath>
+#include <string.h>
 
 //eight-connected grid
 #define ENVINTERVALLAT_DXYWIDTH 8

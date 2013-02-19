@@ -30,6 +30,9 @@
 #define __INTERVAL_PLANNER_H_
 
 #include <sbpl_dynamic_planner_3D/DiscreteSpaceTimeIntervalInformation.h>
+#include <cmath>
+#include <string.h>
+
 
 //---configuration----
 
