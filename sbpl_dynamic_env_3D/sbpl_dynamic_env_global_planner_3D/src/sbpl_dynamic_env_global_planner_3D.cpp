@@ -192,7 +192,7 @@ void SBPLDynEnv3DGlobalPlanner::initialize(std::string name)
     //TODO: Get footprint from somewhere !
 
     /** Initialize Occupancy Grid */ 
-    grid_ = new sbpl_arm_planner::OccupancyGrid(worldx_, worldy_, worldz_, resolution_, originx_, originy_, originz_);
+    grid_ = new sbpl_occupancy_grid::OccupancyGrid(worldx_, worldy_, worldz_, resolution_, originx_, originy_, originz_);
     grid_->setReferenceFrame(global_frame_id_);
 
 

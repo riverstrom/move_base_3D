@@ -11,7 +11,7 @@ A wrapper around sbpl_dynamic_planner_3D which allows it to be used as a global 
   <depend package="roscpp"/>
   <!--  depend package="sbpl"/ -->
   <depend package="sbpl_dynamic_planner_3D"/>
-  <depend package="sbpl_arm_planner"/>
+  <!-- depend package="sbpl_arm_planner"/ -->
   <depend package="sbpl_3d_planner"/>
   <depend package="dynamic_obs_msgs"/>
   <depend package="arm_navigation_msgs"/>
@@ -20,9 +20,10 @@ A wrapper around sbpl_dynamic_planner_3D which allows it to be used as a global 
   <depend package="std_msgs"/>
   <depend package="pcl_ros"/>
   <depend package="octomap_ros"/>
+  <depend package="distance_field"/>
 
   <export>
-    <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lsbpl_dynamic_env_global_planner_3D"/>
+    <cpp cflags="-I${prefix}/include" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lsbpl_dynamic_env_global_planner_3D -lsbpl_occupancy_grid"/>
     <nav_core plugin="${prefix}/bgp_plugin.xml" />
   </export>
 

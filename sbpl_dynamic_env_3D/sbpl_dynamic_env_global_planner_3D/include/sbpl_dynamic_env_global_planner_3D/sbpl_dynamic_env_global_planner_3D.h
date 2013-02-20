@@ -21,7 +21,7 @@
 #include <sbpl_dynamic_planner_3D/DiscreteSpaceTimeIntervalInformation.h>
 #include <sbpl_dynamic_planner_3D/weightedAStar.h>
 #include <sbpl_dynamic_planner_3D/intervalPlanner.h>
-#include <sbpl_arm_planner/occupancy_grid.h>
+#include <sbpl_occupancy_grid/occupancy_grid.h>
 //#include <sbpl_collision_checking/occupancy_grid.h>
 #include <dynamic_obs_msgs/DynamicObstacles.h>
 
@@ -64,7 +64,7 @@ private:
   ros::Subscriber dynObs_sub;
 
 
-  sbpl_arm_planner::OccupancyGrid* grid_;   /* Occupancy grid that maintains the distance transform of the collision map returned by octomap server*/
+  sbpl_occupancy_grid::OccupancyGrid* grid_;   /* Occupancy grid that maintains the distance transform of the collision map returned by octomap server*/
    
   bool initialized_;
   bool cmap_loaded_;
