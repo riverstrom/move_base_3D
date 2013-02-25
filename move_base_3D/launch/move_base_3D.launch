@@ -9,16 +9,23 @@
     <remap from="/currentPos" to="/currentPos" />
     <rosparam file="$(find sbpl_dynamic_env_global_planner_3D)/config/asipp_params.yaml" command="load"/>
     <param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/simple_0.5_diag_heli_time_0.1.mprim" /> 
-<!--     <param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/heli_time_0.1.mprim" /> -->
-<!--     <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg-room-1.bt" /> -->
-    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg_room_1.bt" />
-<!--     <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/freiburg1_360.bt" /> -->
+<!--<param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/simple_0.5_diag_heli_time_0.1.mprim" /> --> 
+<!--    <param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/heli_time_0.1.mprim" /> -->
+<!--    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg-room-1.bt" /> -->
+<!--    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg_room_1.bt" /> -->
+<!--    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/freiburg1_360.bt" /> -->
+    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/ccny_3rooms_octomap_5cm.bt" />
   </node>
 
-  <!-- UAV Goal Set -->
-<!--   <node pkg="uav_set_goal" name="UAVSetGoal" type="uav_set_goal"> -->
-<!--   </node> -->
+  <!-- Goal and Start interactive markers -->
   <node pkg="goal_interactive_marker" name="goal_interactive_marker" type="goal_interactive_marker">
+     <param name="goal_init_pose_x" value="-5.624168" />
+     <param name="goal_init_pose_y" value="0.556141" />
+     <param name="goal_init_pose_z" value="0.062963" />
+     
+     <param name="start_init_pose_x" value="5.66191" />
+     <param name="start_init_pose_y" value="-1.07912" />
+     <param name="start_init_pose_z" value="0.468205" />
   </node>
 
 </launch>
