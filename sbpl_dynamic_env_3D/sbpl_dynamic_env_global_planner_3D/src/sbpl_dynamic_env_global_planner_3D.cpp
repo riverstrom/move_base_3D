@@ -199,13 +199,17 @@ void SBPLDynEnv3DGlobalPlanner::initialize(std::string name)
   //  octomap_server_ = new octomap::OctomapServer(static_collision_map_);
     std::vector<geometry_msgs::Point> footprint;
     geometry_msgs::Point pt;
-    pt.x = 0; pt.y = 0; pt.z = 0.15;
-    footprint.push_back(pt);
-    pt.x = 0; pt.y = 0; pt.z = -0.15;
-    footprint.push_back(pt);
     pt.x = 0.5; pt.y = 0; pt.z = 0;
     footprint.push_back(pt);
     pt.x = -0.5; pt.y = 0; pt.z = 0;
+    footprint.push_back(pt);
+    pt.x = 0.0; pt.y = 0.5; pt.z = 0;
+    footprint.push_back(pt);
+    pt.x = 0.0; pt.y = -0.5; pt.z = 0;
+    footprint.push_back(pt);
+    pt.x = 0; pt.y = 0; pt.z = 0.5;
+    footprint.push_back(pt);
+    pt.x = 0; pt.y = 0; pt.z = -0.5;
     footprint.push_back(pt);
 
     env = new EnvIntervalLat();
@@ -260,7 +264,7 @@ void SBPLDynEnv3DGlobalPlanner::initialize(std::string name)
     plan_dynObs_timestamp = ros::Time::now(); 
     dynObs_sub = nh.subscribe("dynamic_obstacles", 1, &SBPLDynEnv3DGlobalPlanner::dynamicObstacleCallback, this);
     goal_pub = nh.advertise<geometry_msgs::PoseStamped>("sbpl_dyn_env_3D/goal",1);
-    printf("Constructor Done !\n");
+    ROS_DEBUG("Constructor Done !\n");
   }
 }
 /** Destructor */
@@ -287,7 +291,7 @@ void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start
   cmap_loaded_ = true;
 
 
-  ROS_INFO("\n\n\n\nstart wrapper\n");
+  ROS_DEBUG("start wrapper");
   //clearing plan to make sure that there's no garbage
   plan.clear();
 
@@ -360,27 +364,11 @@ void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start
 
         int cell[] = {ix,iy,iz};
         double dist_to_obs = grid_->getCell(cell);
-        if((ix > 110) && (ix < 112) && (iy > 110) && (iy < 112) && (iz >= 5) && (iz < 7))
-        {
-          ROS_ERROR("%d %d %d: dist_to_obs=%f: cost==%d\n",ix,iy,iz,dist_to_obs, convertDistToCost(dist_to_obs));
-        }
-
         env->UpdateCost(ix, iy, iz, convertDistToCost(dist_to_obs));
-
-
-//        if((ix > 100) && (ix < 110) && (iy > 100) && (iy < 110) && (iz >= 5) && (iz < 15))
-//        {
-//          env->UpdateCost(ix, iy, iz, 90);
-//        }
-//        if((ix > 105) && (ix < 108) && (iy > 119) && (iy < 122) && (iz >= 7) && (iz < 9))
-//        {
-//          ROS_ERROR("%d %d %d: %f: %d\n",ix,iy,iz,dist_to_obs, convertDistToCost(dist_to_obs));
-//          env->UpdateCost(ix, iy, iz, convertDistToCost(dist_to_obs));
-//        }
       }
     }
   }
-  printf("Begin Planning\n");
+  ROS_INFO("Begin Planning\n");
   planner->force_planning_from_scratch();
 
   //setting planner parameters
@@ -392,14 +380,14 @@ void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start
   vector<int> solution_stateIDs;
   ROS_DEBUG("start planner\n");
   if(planner->replan(allocated_time_, &solution_stateIDs))
-    ROS_DEBUG("Solution is found");
+    ROS_INFO("Solution is found");
   else{
-    ROS_DEBUG("Solution not found");
+    ROS_WARN("Solution not found");
     // return false;
   }
 
   ROS_DEBUG("size of solution=%d", (int)solution_stateIDs.size());
-  printf("End Planning\n");
+  ROS_INFO("End Planning\n");
 
   vector<SBPL_4Dpt_t> sbpl_path;
   env->ConvertStateIDPathintoXYThetaPath(&solution_stateIDs, &sbpl_path);

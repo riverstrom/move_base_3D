@@ -25,7 +25,7 @@ MoveBase3D::MoveBase3D()
 
 void MoveBase3D::localCMapCallback(const ros::TimerEvent& e)
 {
-  printf("Publishing Local Collision Map\n");
+  ROS_DEBUG("Publishing Local Collision Map\n");
   arm_navigation_msgs::CollisionMap cmap;
   octomap_server_->getLocalCollisionMap(cmap, currentPos_, window_side_);
   local_cmap_pub.publish(cmap);

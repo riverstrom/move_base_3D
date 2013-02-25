@@ -3333,7 +3333,7 @@ int EnvIntervalLat::SetStart(double x_m, double y_m, double z_m, double theta_ra
 
 	if(!IsWithinMapCell(x,y,z))
 	{
-		SBPL_ERROR("ERROR: trying to set a start cell %d %d that is outside of map\n", x,y);
+		SBPL_ERROR("ERROR: trying to set a start cell %d %d %d that is outside of map\n", x,y,z);
 		return -1;
 	}
 
