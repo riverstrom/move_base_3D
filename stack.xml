@@ -1,6 +1,6 @@
 <stack>
   <description brief="sbpl_dynamic_env_3D">sbpl_dynamic_env_3D</description>
-  <author>Maintained by Venkatraman</author>
+  <author>Daniel Perea Ström (forked from Venkatraman)</author>
   <license>BSD</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/sbpl_dynamic_env_3D</url>
