@@ -104,7 +104,8 @@ private:
 
 
   ros::Publisher plan_pub_;
-  ros::Publisher marker_pub;
+  ros::Publisher plan_marker_pub_;
+  ros::Publisher expands_marker_pub_;
   ros::Publisher goal_pub;
   geometry_msgs::PoseStamped prevGoal;
   bool pathDone;
