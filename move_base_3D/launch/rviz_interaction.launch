@@ -1,0 +1,10 @@
+<launch>
+  <master auto="start"/>
+  <param name="/use_sim_time" value="false"/>
+
+  <!-- RViz with interaction config -->
+  <node pkg="rviz" name="rviz" type="rviz"
+     args="-d $(find sbpl_dynamic_planner_3D)/config/path_visualizer_config_real.vcg" />
+
+</launch>
+
