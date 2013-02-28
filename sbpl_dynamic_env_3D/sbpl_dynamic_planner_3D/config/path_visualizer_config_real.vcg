@@ -73,11 +73,15 @@ Path.ColorG=0.666667
 Path.ColorR=0
 Path.Enabled=1
 Path.Topic=/plan
-Property\ Grid\ Splitter=734,78
+Plan\ markers.Enabled=1
+Plan\ markers.Marker\ Array\ Topic=/plan_marker_array
+Plan\ markers.Queue\ Size=100
+Plan\ markers.marker_plan=1
+Property\ Grid\ Splitter=770,78
 Property\ Grid\ State=expanded=.Global Options,.Global Status;splitterratio=0.713974
-QMainWindow=000000ff00000000fd0000000300000000000001a90000037efc0200000001fb000000100044006900730070006c00610079007301000000360000037e000000ee00ffffff00000001000001310000037efc0200000003fb0000001e0054006f006f006c002000500072006f007000650072007400690065007300000000360000036c0000006700fffffffb0000000a0056006900650077007300000000360000037e000000bb00fffffffb0000001200530065006c0065006300740069006f006e000000001d000003bf0000006700ffffff00000003000005a00000003efc0100000001fb0000000800540069006d00650100000000000005a0000002bf00ffffff000003f10000037e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+QMainWindow=000000ff00000000fd0000000300000000000001a9000003a2fc0200000001fb000000100044006900730070006c0061007900730100000036000003a2000000ee00ffffff00000001000001310000037efc0200000003fb0000001e0054006f006f006c002000500072006f007000650072007400690065007300000000360000036c0000006700fffffffb0000000a0056006900650077007300000000360000037e000000bb00fffffffb0000001200530065006c0065006300740069006f006e000000001d000003bf0000006700ffffff00000003000005b00000003efc0100000001fb0000000800540069006d00650100000000000005b0000002bf00ffffff00000401000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
 Search\ expands.Enabled=0
-Search\ expands.Marker\ Array\ Topic=/visualization_marker_array
+Search\ expands.Marker\ Array\ Topic=/expands_marker_array
 Search\ expands.Queue\ Size=0
 Start\ and\ Goal.Enabled=1
 Start\ and\ Goal.Show\ Axes=1
@@ -101,6 +105,9 @@ Name=Grid
 [Display1]
 ClassName=rviz::TFDisplay
 Name=TF
+[Display10]
+ClassName=rviz::MapDisplay
+Name=Octomap 2D projected map
 [Display2]
 ClassName=rviz::AxesDisplay
 Name=Axes
@@ -112,21 +119,21 @@ ClassName=rviz::PathDisplay
 Name=Path
 [Display5]
 ClassName=rviz::MarkerArrayDisplay
-Name=Search expands
+Name=Plan markers
 [Display6]
+ClassName=rviz::MarkerArrayDisplay
+Name=Search expands
+[Display7]
 ClassName=rviz::PointCloud2Display
 Name=Octomap centers
-[Display7]
+[Display8]
 ClassName=rviz::MarkerArrayDisplay
 Name=Octomap boxes
-[Display8]
+[Display9]
 ClassName=mapping_rviz_plugin::CollisionMapDisplay
 Name=Octomap collision map
-[Display9]
-ClassName=rviz::MapDisplay
-Name=Octomap 2D projected map
 [Window]
-Height=1052
-Width=1456
-X=571
+Height=1088
+Width=1472
+X=564
 Y=117
