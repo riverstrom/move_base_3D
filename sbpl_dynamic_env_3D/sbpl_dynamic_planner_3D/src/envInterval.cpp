@@ -3231,9 +3231,12 @@ void EnvIntervalLat::ConvertStateIDPathintoXYThetaPath(vector<int>* stateIDPath,
     }
     else
       sourcet = DISCTIME2CONT(sourcet_c, envIntervalLatCfg.timeResolution);
-
+                int ipind_max = ((int)actionV[bestsind]->intermptV.size())-1;
+                if(pind == (int)(stateIDPath->size())-2) {
+                  ipind_max++; //go to the last point at the goal (last pind)
+                }
 		//TODO - when there are no motion primitives we should still print source state
-		for(int ipind = 0; ipind < ((int)actionV[bestsind]->intermptV.size())-1; ipind++) 
+		for(int ipind = 0; ipind < ipind_max; ipind++)
 		{
 			//translate appropriately
 			SBPL_4Dpt_t intermpt = actionV[bestsind]->intermptV[ipind];

@@ -11,12 +11,14 @@
     <param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/simple_0.5_diag_heli_time_0.1.mprim" /> 
 <!--<param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/simple_0.5_diag_heli_time_0.1.mprim" /> --> 
 <!--    <param name="primitive_filename" value="$(find sbpl_dynamic_env_global_planner_3D)/config/heli_time_0.1.mprim" /> -->
-<!--    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg-room-1.bt" /> -->
-<!--    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/wg_room_1.bt" /> -->
-<!--    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/freiburg1_360.bt" /> -->
-    <param name="static_collision_map" value="$(find sbpl_dynamic_env_global_planner_3D)/config/ccny_3rooms_octomap_5cm.bt" />
   </node>
 
+  <!-- Octomap server -->
+  <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" respawn="false" output="screen" clear_params="true"
+    args="$(find sbpl_dynamic_env_global_planner_3D)/config/ccny_3rooms_octomap_5cm.bt" />
+<!-- args="$(find sbpl_dynamic_env_global_planner_3D)/config/wg_room_1.bt" /> -->
+<!-- args="$(find sbpl_dynamic_env_global_planner_3D)/config/freiburg1_360.bt" /> -->
+  
   <!-- Goal and Start interactive markers -->
   <node pkg="goal_interactive_marker" name="goal_interactive_marker" type="goal_interactive_marker">
      <param name="goal_init_pose_x" value="-5.624168" />
