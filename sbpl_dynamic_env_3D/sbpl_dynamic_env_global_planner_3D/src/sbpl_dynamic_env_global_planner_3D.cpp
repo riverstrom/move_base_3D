@@ -589,9 +589,9 @@ void SBPLDynEnv3DGlobalPlanner::visualizeExpansions()
     m.scale.y = 0.10;
     m.scale.z = 0.10;
     double hue = (double)(i + 1) / (double)((int)p.size());
-    m.color.r = 1.0;
+    m.color.r = 1-hue;
     m.color.g = hue;
-    m.color.b = 0.0;
+    m.color.b = 1.0;
     m.color.a = 0.5;
     m.lifetime = ros::Duration();
 
