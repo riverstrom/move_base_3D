@@ -282,7 +282,7 @@ void SBPLDynEnv3DGlobalPlanner::initialize(std::string name)
 
     ROS_INFO("[sbpl_dynamic_env_global_planner] Initialized successfully");
     plan_pub_ = nh.advertise<nav_msgs::Path>("plan", 1);
-    plan_marker_pub_ = nh.advertise<visualization_msgs::MarkerArray>("/plan_marker_array", 1);
+    plan_marker_pub_ = nh.advertise<visualization_msgs::MarkerArray>("/plan_marker_array", 1, true);
     expands_marker_pub_ = nh.advertise<visualization_msgs::MarkerArray>("/expands_marker_array", 1);
 
     pthread_mutex_init(&m, NULL);
@@ -464,7 +464,7 @@ void SBPLDynEnv3DGlobalPlanner::makePlan(const geometry_msgs::PoseStamped& start
 
     visualization_msgs::Marker m;
     m.header.frame_id = global_frame_id_;
-    m.header.stamp = plan_time;
+    m.header.stamp = ros::Time::now();
     m.ns = "marker_plan";
     m.id = i;
     m.type = visualization_msgs::Marker::ARROW; //CUBE;
